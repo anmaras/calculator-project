@@ -30,3 +30,8 @@ body {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
 }
+
+button:nth-child(n + 17):nth-child(-n + 17) {
+  grid-column: 1 / 3;
+  background-color: darkgreen;
+}
