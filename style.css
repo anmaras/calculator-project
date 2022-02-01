@@ -13,6 +13,7 @@ body {
   background-color: darkgreen;
   width: 450px;
   height: 550px;
+  padding: 5px;
 
   /* css Grid */
   display: grid;
@@ -21,17 +22,35 @@ body {
 }
 
 #calc-display-container {
+  display: grid;
   background-color: crimson;
+  padding: 10px;
+}
+
+.display {
+  padding: 5px;
+  display: grid;
+  justify-content: end;
+  align-content: center;
+  background-color: darkseagreen;
+}
+.display-text {
+  font-size: 49px;
 }
 
 #calc-buttons-container {
-  background-color: darkgoldenrod;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
+  row-gap: 2px;
+  column-gap: 2px;
 }
 
+/*cell selector */
 button:nth-child(n + 17):nth-child(-n + 17) {
   grid-column: 1 / 3;
-  background-color: darkgreen;
+}
+
+button {
+  border: 0px;
 }
