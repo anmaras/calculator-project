@@ -10,10 +10,10 @@ body {
 }
 
 #calc-container {
-  background-color: darkgreen;
   width: 450px;
   height: 550px;
   padding: 5px;
+  background-color: lightgray;
 
   /* css Grid */
   display: grid;
@@ -23,16 +23,14 @@ body {
 
 #calc-display-container {
   display: grid;
-  background-color: crimson;
-  padding: 10px;
 }
 
 .display {
+  background-color: lightslategrey;
   padding: 5px;
   display: grid;
   justify-content: end;
   align-content: center;
-  background-color: darkseagreen;
 }
 .display-text {
   font-size: 49px;
@@ -53,4 +51,5 @@ button:nth-child(n + 17):nth-child(-n + 17) {
 
 button {
   border: 0px;
+  font-size: 25px;
 }
