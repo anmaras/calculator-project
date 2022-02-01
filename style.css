@@ -10,12 +10,19 @@ body {
 }
 
 #calc-container {
+  display: flex;
+  flex-direction: column;
   background-color: blue;
   width: 450px;
   height: 550px;
 }
 
 #calc-display-container {
+  flex: 1;
   background-color: crimson;
-  height: 100px;
+}
+
+#calc-buttons-container {
+  flex: 3;
+  background-color: darkgoldenrod;
 }
