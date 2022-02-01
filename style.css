@@ -10,19 +10,24 @@ body {
 }
 
 #calc-container {
-  display: flex;
-  flex-direction: column;
-  background-color: blue;
   width: 450px;
   height: 550px;
+
+  /* css Grid */
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr;
 }
 
 #calc-display-container {
-  flex: 1;
   background-color: crimson;
 }
 
 #calc-buttons-container {
-  flex: 3;
   background-color: darkgoldenrod;
+
+  /* CSS Grid */
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
