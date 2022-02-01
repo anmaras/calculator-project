@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#calc-container {
+  background-color: blue;
+  width: 450px;
+  height: 550px;
+}
+
+#calc-display-container {
+  background-color: crimson;
+  height: 100px;
+}
