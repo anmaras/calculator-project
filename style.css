@@ -3,8 +3,8 @@
   margin: 0;
 }
 body {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
   align-items: center;
   height: 100vh;
 }
@@ -18,7 +18,6 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 3fr;
-  row-gap: 5px;
 }
 
 #calc-display-container {
@@ -27,11 +26,7 @@ body {
 
 #calc-buttons-container {
   background-color: darkgoldenrod;
-
-  /* CSS Grid */
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  row-gap: 2px;
-  column-gap: 2px;
 }
