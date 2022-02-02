@@ -21,6 +21,12 @@ html {
   grid-template-columns: repeat(4, 25%);
   grid-template-rows: repeat(6, 1fr);
   row-gap: 10px;
+
+  box-shadow: 4px 4px 5px 1px rgb(59, 130, 143),
+    10px 10px 10px 2px rgb(204, 204, 204),
+    inset -2px -2px 5px 1px rgba(70, 59, 36, 0.596),
+    inset -6px -6px 1px 1px rgba(179, 161, 125, 0);
+  /* box-shadow: 5px 5px 50px 10px rgba(190, 198, 199, 0.781); */
 }
 
 #display {
