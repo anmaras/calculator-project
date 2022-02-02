@@ -14,23 +14,29 @@ html {
   display: grid;
   height: 700px;
   width: 500px;
-  padding: 10px;
-  background-color: slategray;
+  padding: 25px;
+  border: 10px solid rgb(76, 173, 190);
+  border-radius: 15px;
+  background-color: rgb(243, 220, 171);
   grid-template-columns: repeat(4, 25%);
   grid-template-rows: repeat(6, 1fr);
+  row-gap: 10px;
 }
 
 #display {
   grid-column: 1/-1;
   grid-row: 1/2;
-  background-color: salmon;
+  background-color: rgb(143, 148, 129);
 }
 #numbers-wrapper {
   grid-column: 1/-1;
   grid-row: 2/7;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  background-color: green;
+  gap: 10px 10px;
+}
+button {
+  box-shadow: 5px 5px 1px #303030;
 }
 
 button:last-child {
