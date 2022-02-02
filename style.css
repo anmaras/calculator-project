@@ -27,6 +27,9 @@ html {
   grid-column: 1/-1;
   grid-row: 1/2;
   background-color: rgb(143, 148, 129);
+  box-shadow: inset 2px 2px 1px rgb(201, 190, 166),
+    inset 4px 4px 5px rgba(0, 0, 0, 0.534),
+    inset 8px 8px 20px rgba(0, 0, 0, 0.2);
 }
 #numbers-wrapper {
   grid-column: 1/-1;
@@ -36,9 +39,27 @@ html {
   gap: 10px 10px;
 }
 button {
+  font-size: xx-large;
   box-shadow: 5px 5px 1px #303030;
 }
 
+/* equal button position  */
+
 button:last-child {
-  background-color: rgb(128, 113, 112);
+  grid-column: 3/-1;
+}
+
+/* button colors */
+
+.numbers {
+  color: beige;
+  background-color: rgb(36, 30, 30);
+}
+.operators {
+  color: beige;
+  background-color: darkorange;
+}
+.utilities {
+  color: beige;
+  background-color: rgb(209, 62, 51);
 }
