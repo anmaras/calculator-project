@@ -35,12 +35,12 @@ html {
 #display {
   grid-column: 1/-1;
   grid-row: 1/2;
-  background-color: rgb(143, 148, 129);
+  background-color: rgb(168, 170, 128);
 
   /* main display shadows */
   box-shadow: inset 2px 2px 1px rgb(201, 190, 166),
     inset 4px 4px 5px rgba(0, 0, 0, 0.534),
-    inset 8px 8px 20px rgba(0, 0, 0, 0.2);
+    inset 8px 8px 10px rgba(0, 0, 0, 0.2);
 }
 
 #numbers-wrapper {
@@ -54,9 +54,9 @@ html {
 /*buttons style */
 
 button {
-  font-size: xx-large;
+  font-size: 40px;
 
-  border-radius: 10px;
+  border-radius: 6px;
 }
 
 /* equal button position  */
@@ -69,22 +69,32 @@ button:last-child {
 
 .numbers {
   color: beige;
-  border: 5px outset rgba(255, 255, 255, 0.233);
-  background-color: rgb(36, 30, 30);
-  /*sss effect */
-  box-shadow: inset 0px 0px 15px 1px rgba(92, 92, 92, 0.521);
+  border: 5px outset rgb(51, 51, 51);
+  background-color: rgb(31, 31, 31);
+
+  box-shadow: 
+    /*sss effect */ inset 0px 0px 15px 1px rgb(34, 34, 34),
+    /*AO effect */ 0px 0px 1px 2px rgb(26, 14, 0.75),
+    /* shadow */ 2px 2px 8px rgba(0, 0, 0, 0.883);
 }
 .operators {
   color: beige;
-  background-color: darkorange;
+
+  background-color: rgb(255, 143, 52);
   border: 5px outset rgba(255, 255, 255, 0.233);
-  /*sss effect */
-  box-shadow: inset 0px 0px 15px 2px rgba(255, 187, 0, 0.644);
+
+  box-shadow: 
+  /*sss effect */ inset 0px 0px 20px 2px #ff9812,
+    /*AO effect */ 0px 0px 2px 2px rgb(201, 98, 0.75),
+    /* shadow */ 3px 3px 5px rgba(0, 0, 0, 0.233);
 }
 .utilities {
   color: beige;
-  border: 5px outset rgba(255, 255, 255, 0.233);
-  background-color: rgb(209, 62, 51);
-  /*sss effect */
-  box-shadow: inset 0px 0px 15px 2px rgba(255, 143, 79, 0.644);
+  border: 5px outset rgba(255, 222, 222, 0.24);
+  background-color: rgb(255, 72, 59);
+
+  box-shadow: 
+    /*sss effect */ inset 0px 0px 20px 2px rgb(253, 70, 70),
+    /*AO effect */ 0px 0px 2px 2px rgba(206, 0, 0, 0.712),
+    /* shadow*/ 3px 3px 5px rgba(0, 0, 0, 0.23);
 }
