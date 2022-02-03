@@ -12,40 +12,41 @@ html {
 
 #calculator {
   display: grid;
-  grid-template-columns: repeat(4, 25%);
-  grid-template-rows: repeat(6, 1fr);
-  row-gap: 10px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr;
+  row-gap: 25px;
 
   height: 700px;
   width: 500px;
-  padding: 25px;
+  padding: 40px 40px;
 
-  border: 10px solid rgb(76, 173, 190);
-  border-radius: 15px;
+  /*calculator body color */
+  border-radius: 10px;
   background-color: rgb(243, 220, 171);
 
   /* main calculator body shadows */
-  box-shadow: 4px 4px 5px 1px rgb(59, 130, 143),
-    10px 10px 10px 2px rgb(204, 204, 204),
-    inset -2px -2px 5px 1px rgba(70, 59, 36, 0.596),
-    inset -6px -6px 1px 1px rgba(179, 161, 125, 0);
-  /* box-shadow: 5px 5px 50px 10px rgba(190, 198, 199, 0.781); */
+  box-shadow: 
+  /* AO effect */ inset 0px 0px 1px 3px rgb(101, 154, 170),
+    /* SSS effect  outer */ 0px 0px 3px 2px rgba(165, 232, 255, 0.199),
+    /* SSS effect  inner*/ inset 0px 0px 10px 10px rgba(214, 202, 179, 0.541),
+    /* Border */ 0px 0px 0px 15px rgb(95, 183, 209),
+    /*Gi effect */ 5px 5px 50px 10px rgba(190, 198, 199, 0.781);
 }
 
 #display {
   grid-column: 1/-1;
   grid-row: 1/2;
   background-color: rgb(168, 170, 128);
+  border-radius: 6px;
 
   /* main display shadows */
-  box-shadow: inset 2px 2px 1px rgb(201, 190, 166),
-    inset 4px 4px 5px rgba(0, 0, 0, 0.534),
-    inset 8px 8px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 
+  /*depth effect */ inset 0px 0px 2px 1px rgb(219, 198, 152),
+    /*AO effect */ inset 0px 0px 10px 1px rgba(0, 0, 0, 0.233),
+    /* Shadow */ inset 3px 3px 5px rgba(0, 0, 0, 0.2);
 }
 
 #numbers-wrapper {
-  grid-column: 1/-1;
-  grid-row: 2/7;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px 10px;
@@ -55,7 +56,6 @@ html {
 
 button {
   font-size: 40px;
-
   border-radius: 6px;
 }
 
