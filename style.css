@@ -49,7 +49,7 @@ html {
 #numbers-wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px 10px;
+  gap: 15px 15px;
 }
 
 /*buttons style */
