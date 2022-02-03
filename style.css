@@ -12,16 +12,19 @@ html {
 
 #calculator {
   display: grid;
-  height: 700px;
-  width: 500px;
-  padding: 25px;
-  border: 10px solid rgb(76, 173, 190);
-  border-radius: 15px;
-  background-color: rgb(243, 220, 171);
   grid-template-columns: repeat(4, 25%);
   grid-template-rows: repeat(6, 1fr);
   row-gap: 10px;
 
+  height: 700px;
+  width: 500px;
+  padding: 25px;
+
+  border: 10px solid rgb(76, 173, 190);
+  border-radius: 15px;
+  background-color: rgb(243, 220, 171);
+
+  /* main calculator body shadows */
   box-shadow: 4px 4px 5px 1px rgb(59, 130, 143),
     10px 10px 10px 2px rgb(204, 204, 204),
     inset -2px -2px 5px 1px rgba(70, 59, 36, 0.596),
@@ -33,10 +36,13 @@ html {
   grid-column: 1/-1;
   grid-row: 1/2;
   background-color: rgb(143, 148, 129);
+
+  /* main display shadows */
   box-shadow: inset 2px 2px 1px rgb(201, 190, 166),
     inset 4px 4px 5px rgba(0, 0, 0, 0.534),
     inset 8px 8px 20px rgba(0, 0, 0, 0.2);
 }
+
 #numbers-wrapper {
   grid-column: 1/-1;
   grid-row: 2/7;
@@ -44,9 +50,13 @@ html {
   grid-template-columns: repeat(4, 1fr);
   gap: 10px 10px;
 }
+
+/*buttons style */
+
 button {
   font-size: xx-large;
-  box-shadow: 5px 5px 1px #303030;
+
+  border-radius: 10px;
 }
 
 /* equal button position  */
@@ -64,6 +74,9 @@ button:last-child {
 .operators {
   color: beige;
   background-color: darkorange;
+  border: 5px outset rgba(255, 255, 255, 0.233);
+
+  box-shadow: inset 0px 0px 15px 2px rgba(255, 187, 0, 0.644);
 }
 .utilities {
   color: beige;
