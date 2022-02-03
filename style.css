@@ -75,10 +75,13 @@ button:last-child {
   color: beige;
   background-color: darkorange;
   border: 5px outset rgba(255, 255, 255, 0.233);
-
+  /*sss effect */
   box-shadow: inset 0px 0px 15px 2px rgba(255, 187, 0, 0.644);
 }
 .utilities {
   color: beige;
+  border: 5px outset rgba(255, 255, 255, 0.233);
   background-color: rgb(209, 62, 51);
+  /*sss effect */
+  box-shadow: inset 0px 0px 15px 2px rgba(255, 143, 79, 0.644);
 }
