@@ -65,34 +65,32 @@ button:last-child {
   grid-column: 3/-1;
 }
 
-/* button colors */
+/* button colors and shadows */
 
 .numbers {
   color: beige;
-  border: 5px outset rgb(51, 51, 51);
-  background-color: rgb(31, 31, 31);
-
+  border: 5px outset rgb(51, 51, 51, 0.25);
+  background-color: rgb(41, 41, 41);
   box-shadow: 
-    /*sss effect */ inset 0px 0px 15px 1px rgb(34, 34, 34),
-    /*AO effect */ 0px 0px 1px 2px rgb(26, 14, 0.75),
-    /* shadow */ 2px 2px 8px rgba(0, 0, 0, 0.883);
+    /*sss effect */ inset 0px 0px 20px 2px rgb(34, 34, 34),
+    /*AO effect */ 0px 0px 2px 2px rgb(26, 14, 0.75),
+    /* shadow */ 3px 3px 5px rgba(0, 0, 0, 0.883);
 }
+
 .operators {
   color: beige;
-
   background-color: rgb(255, 143, 52);
-  border: 5px outset rgba(255, 255, 255, 0.233);
-
+  border: 5px outset rgba(255, 255, 255, 0.151);
   box-shadow: 
-  /*sss effect */ inset 0px 0px 20px 2px #ff9812,
+    /*sss effect */ inset 0px 0px 20px 2px #ff9812,
     /*AO effect */ 0px 0px 2px 2px rgb(201, 98, 0.75),
     /* shadow */ 3px 3px 5px rgba(0, 0, 0, 0.233);
 }
+
 .utilities {
   color: beige;
-  border: 5px outset rgba(255, 222, 222, 0.24);
+  border: 5px outset rgba(255, 222, 222, 0.15);
   background-color: rgb(255, 72, 59);
-
   box-shadow: 
     /*sss effect */ inset 0px 0px 20px 2px rgb(253, 70, 70),
     /*AO effect */ 0px 0px 2px 2px rgba(206, 0, 0, 0.712),
