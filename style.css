@@ -73,7 +73,7 @@ html {
 
 .display-text {
   grid-row: 2/3;
-  font-size: 75px;
+  font-size: 50px;
 }
 
 .display-history {
@@ -84,7 +84,9 @@ html {
 .display-text,
 .display-history {
   overflow: hidden;
-  font-family: "digital-7_monomono";
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 0px;
+  margin: 0px;
   /* color: rgb(165, 167, 126); */
   /* text-shadow: 1px 1px 0px black; */
 }
