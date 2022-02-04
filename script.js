@@ -1,11 +1,21 @@
-const displayContainer = document.querySelector(".display-text");
+const displayContent = document.querySelector(".display-text");
 const numberButtons = document.querySelectorAll(".numbers");
-let text = [];
+const utilitiesButtons = document.querySelectorAll(".utilities");
+const operatorsButtons = document.querySelectorAll(".operators");
+let numberArr = [];
+
+const testFunction = (e) => {
+  numberArr.push(e.target.value);
+  displayContent.textContent = numberArr.join("");
+  if (numberArr.join("").length > 13) {
+    displayContent.textContent = numberArr.slice(0, 13).join("");
+  }
+  console.log(displayContent.textContent);
+
+  console.log(displayContent.textContent.length);
+  console.log(numberArr.join("").length);
+};
 
 numberButtons.forEach((button) => {
-  button.addEventListener("click", (e) => {
-    text.push(e.target.value);
-    displayContainer.textContent = text.join("");
-    console.log(text);
-  });
+  button.addEventListener("click", testFunction);
 });
