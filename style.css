@@ -85,7 +85,7 @@ html {
 .display-history {
   overflow: hidden;
   font-family: "digital-7_monomono";
-  color: rgb(165, 167, 126);
+  /* color: rgb(165, 167, 126); */
   /* text-shadow: 1px 1px 0px black; */
 }
 
