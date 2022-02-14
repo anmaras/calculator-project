@@ -3,36 +3,39 @@ const allButtons = document.querySelectorAll("button");
 const numberButtons = document.querySelectorAll(".numbers");
 const utilitiesButtons = document.querySelectorAll(".utilities");
 const operatorsButtons = document.querySelectorAll(".operators");
-let numberOneArr;
-let numberTwoArr;
-displayContent.textContent = "";
 
-// const getNumberButtonValue = (e) => {
-//   numberArr.push(e.target.value);
-//   displayContent.textContent = numberArr.join("");
-//   if (numberArr.join("").length > 13) {
-//     displayContent.textContent = numberArr.slice(0, 13).join("");
-//   }
-// };
+let buttonNumberValues = [];
 
-// numberButtons.forEach((button) => {
-//   button.addEventListener("click", getNumberButtonValue);
-// });
+const clear = () => {
+  displayContent.textContent = "0";
+  buttonNumberValues = [];
+};
 
-const clearButton = (e) => {
-  if (e.target.value === "C") {
-    displayContent.textContent = "0";
+const concat = (buttonValue) => {
+  buttonNumberValues.push(buttonValue);
+  displayContent.textContent = buttonNumberValues.join("");
+  if (buttonNumberValues.includes(".")) {
   }
 };
 
-const numberButtonValues = (e) => {
-  displayContent.textContent += e.target.value;
+const deleteLast = () => {
+  buttonNumberValues.pop();
+  displayContent.textContent = buttonNumberValues.join("");
+  if (displayContent.textContent === "") {
+    displayContent.textContent = 0;
+  }
 };
 
-allButtons.forEach((button) => {
+allButtons.forEach((button) =>
   button.addEventListener("click", (e) => {
-    e.target.value;
-    numberButtonValues(e);
-    clearButton(e);
-  });
-});
+    let buttonValue = e.target.value;
+    console.log(buttonValue);
+    if (buttonValue === "C") {
+      clear();
+    } else if ((buttonValue >= 0 && buttonValue <= 9) || buttonValue === ".") {
+      concat(buttonValue);
+    } else if (buttonValue === "Del") {
+      deleteLast();
+    }
+  })
+);
