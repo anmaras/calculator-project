@@ -4,23 +4,23 @@ const numberButtons = document.querySelectorAll(".numbers");
 const utilitiesButtons = document.querySelectorAll(".utilities");
 const operatorsButtons = document.querySelectorAll(".operators");
 
-let buttonNumberValues = [];
+let buttonValues = [];
 
 const clear = () => {
   displayContent.textContent = "0";
-  buttonNumberValues = [];
+  buttonValues = [];
 };
 
 const concat = (buttonValue) => {
-  buttonNumberValues.push(buttonValue);
-  displayContent.textContent = buttonNumberValues.join("");
-  if (buttonNumberValues.includes(".")) {
+  if (displayContent.textContent.length < 13) {
+    buttonValues.push(buttonValue);
+    displayContent.textContent = buttonValues.join("");
   }
 };
 
 const deleteLast = () => {
-  buttonNumberValues.pop();
-  displayContent.textContent = buttonNumberValues.join("");
+  buttonValues.pop();
+  displayContent.textContent = buttonValues.join("");
   if (displayContent.textContent === "") {
     displayContent.textContent = 0;
   }
@@ -29,7 +29,6 @@ const deleteLast = () => {
 allButtons.forEach((button) =>
   button.addEventListener("click", (e) => {
     let buttonValue = e.target.value;
-    console.log(buttonValue);
     if (buttonValue === "C") {
       clear();
     } else if ((buttonValue >= 0 && buttonValue <= 9) || buttonValue === ".") {
