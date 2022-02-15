@@ -4,23 +4,23 @@ const numberButtons = document.querySelectorAll(".numbers");
 const utilitiesButtons = document.querySelectorAll(".utilities");
 const operatorsButtons = document.querySelectorAll(".operators");
 
-let buttonValues = [];
+let valuesArray = [];
 
 const clear = () => {
   displayContent.textContent = "0";
-  buttonValues = [];
+  valuesArray = [];
 };
 
 const concat = (value) => {
   if (displayContent.textContent.length < 13) {
-    buttonValues.push(value);
-    displayContent.textContent = buttonValues.join("");
+    valuesArray.push(value);
+    displayContent.textContent = valuesArray.join("");
   }
 };
 
 const deleteLast = () => {
-  buttonValues.pop();
-  displayContent.textContent = buttonValues.join("");
+  valuesArray.pop();
+  displayContent.textContent = valuesArray.join("");
   if (displayContent.textContent === "") {
     displayContent.textContent = 0;
   }
