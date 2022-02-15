@@ -15,6 +15,7 @@ const inputNumber = (value) => {
   }
   displayUpdate();
 };
+
 const displayUpdate = () => {
   display.textContent = valueArray.join("");
   if (display.textContent === "") {
@@ -33,12 +34,14 @@ const inputDecimal = (dot) => {
 
 const checkFirstIndexDecimal = () => {
   if (valueArray[0] === ".") {
-    valueArray.unshift("0");
+    // valueArray.unshift("0");
+    valueArray.splice(0, 0, "0");
   }
 };
 
 const deleteLast = () => {
   valueArray.splice(-1, 1);
+  // valueArray.pop();
   displayUpdate();
 };
 
@@ -47,19 +50,19 @@ allButtons.forEach((button) =>
     let buttonValue = e.target.value;
     if (buttonValue === "C") {
       clear();
-      console.log(valueArray);
+      // console.log(valueArray);
     }
     if (buttonValue >= 0 && buttonValue <= 9) {
       inputNumber(buttonValue);
-      console.log(valueArray);
+      // console.log(valueArray);
     }
     if (buttonValue === "Del") {
       deleteLast();
-      console.log(valueArray);
+      // console.log(valueArray);
     }
     if (buttonValue === ".") {
       inputDecimal(buttonValue);
-      console.log(valueArray);
+      // console.log(valueArray);
     }
   })
 );
