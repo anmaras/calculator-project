@@ -1,29 +1,45 @@
-const displayContent = document.querySelector(".display-text");
+const display = document.querySelector(".display-text");
 const allButtons = document.querySelectorAll("button");
-const numberButtons = document.querySelectorAll(".numbers");
-const utilitiesButtons = document.querySelectorAll(".utilities");
-const operatorsButtons = document.querySelectorAll(".operators");
 
-let valuesArray = [];
+let valueArray = [];
 
 const clear = () => {
-  displayContent.textContent = "0";
-  valuesArray = [];
+  valueArray.length = 0;
+
+  displayUpdate();
 };
 
-const concat = (value) => {
-  if (displayContent.textContent.length < 13) {
-    valuesArray.push(value);
-    displayContent.textContent = valuesArray.join("");
+const inputNumber = (value) => {
+  if (valueArray.length < 13) {
+    valueArray.push(value);
+  }
+  displayUpdate();
+};
+const displayUpdate = () => {
+  display.textContent = valueArray.join("");
+  if (display.textContent === "") {
+    display.textContent = "0";
+  }
+};
+displayUpdate();
+
+const inputDecimal = (dot) => {
+  if (!valueArray.includes(".")) {
+    valueArray.push(dot);
+  }
+  checkFirstIndexDecimal();
+  displayUpdate();
+};
+
+const checkFirstIndexDecimal = () => {
+  if (valueArray[0] === ".") {
+    valueArray.unshift("0");
   }
 };
 
 const deleteLast = () => {
-  valuesArray.pop();
-  displayContent.textContent = valuesArray.join("");
-  if (displayContent.textContent === "") {
-    displayContent.textContent = 0;
-  }
+  valueArray.splice(-1, 1);
+  displayUpdate();
 };
 
 allButtons.forEach((button) =>
@@ -31,10 +47,19 @@ allButtons.forEach((button) =>
     let buttonValue = e.target.value;
     if (buttonValue === "C") {
       clear();
-    } else if ((buttonValue >= 0 && buttonValue <= 9) || buttonValue === ".") {
-      concat(buttonValue);
-    } else if (buttonValue === "Del") {
+      console.log(valueArray);
+    }
+    if (buttonValue >= 0 && buttonValue <= 9) {
+      inputNumber(buttonValue);
+      console.log(valueArray);
+    }
+    if (buttonValue === "Del") {
       deleteLast();
+      console.log(valueArray);
+    }
+    if (buttonValue === ".") {
+      inputDecimal(buttonValue);
+      console.log(valueArray);
     }
   })
 );
