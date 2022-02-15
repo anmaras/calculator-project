@@ -11,9 +11,9 @@ const clear = () => {
   buttonValues = [];
 };
 
-const concat = (buttonValue) => {
+const concat = (value) => {
   if (displayContent.textContent.length < 13) {
-    buttonValues.push(buttonValue);
+    buttonValues.push(value);
     displayContent.textContent = buttonValues.join("");
   }
 };
