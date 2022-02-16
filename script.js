@@ -35,14 +35,23 @@ const inputDecimal = (dot) => {
 const checkFirstIndexDecimal = () => {
   if (valueArray[0] === ".") {
     // valueArray.unshift("0");
-    valueArray.splice(0, 0, "0");
+    valueArray.splice(0, 0, 0);
   }
 };
 
 const deleteLast = () => {
-  valueArray.splice(-1, 1);
+  valueArray.splice(-1);
   // valueArray.pop();
   displayUpdate();
+};
+
+const operation = (operator) => {
+  const indexOfOperator = valueArray.indexOf(operator);
+  valueArray.push(operator);
+
+  if (indexOfOperator === 0) {
+    valueArray.shift();
+  }
 };
 
 allButtons.forEach((button) =>
@@ -63,6 +72,14 @@ allButtons.forEach((button) =>
     if (buttonValue === ".") {
       inputDecimal(buttonValue);
       // console.log(valueArray);
+    }
+    if (
+      buttonValue === "+" ||
+      buttonValue === "-" ||
+      buttonValue === "/" ||
+      buttonValue === "*"
+    ) {
+      operation(buttonValue);
     }
   })
 );
