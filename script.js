@@ -46,12 +46,12 @@ const deleteLast = () => {
 };
 
 const operation = (operator) => {
-  const indexOfOperator = valueArray.indexOf(operator);
   valueArray.push(operator);
-
-  if (indexOfOperator === 0) {
-    valueArray.shift();
+  if (valueArray.indexOf(operator) === 0) {
+    valueArray.shift(operator);
   }
+  displayUpdate();
+  console.log(valueArray.indexOf(operator));
 };
 
 allButtons.forEach((button) =>
