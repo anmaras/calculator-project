@@ -1,85 +1,115 @@
 const display = document.querySelector(".display-text");
 const allButtons = document.querySelectorAll("button");
-
+display.textContent = 0;
 let valueArray = [];
+let valueArraySecond = [];
+console.log(display.textContent);
 
-const clear = () => {
-  valueArray.length = 0;
+// const clear = () => {
+//   valueArray.length = 0;
 
-  displayUpdate();
-};
+//   displayUpdate();
+// };
 
 const inputNumber = (value) => {
-  if (valueArray.length < 13) {
-    valueArray.push(value);
-  }
-  displayUpdate();
+  // if (valueArray.length < 13) {
+  // valueArray.push(value);
+  // }
+  // displayUpdate();
 };
 
 const displayUpdate = () => {
-  display.textContent = valueArray.join("");
-  if (display.textContent === "") {
-    display.textContent = "0";
+  if (display.textContent === "0") {
+    display.textContent = buttonValue;
+  } else {
+    display.textContent += buttonValue;
   }
 };
-displayUpdate();
 
 const inputDecimal = (dot) => {
-  if (!valueArray.includes(".")) {
-    valueArray.push(dot);
+  if (dot === ".") {
+    display.textContent = display.textContent + ".";
   }
-  checkFirstIndexDecimal();
-  displayUpdate();
+  // checkFirstIndexDecimal();
+  // displayUpdate();
 };
 
-const checkFirstIndexDecimal = () => {
-  if (valueArray[0] === ".") {
-    // valueArray.unshift("0");
-    valueArray.splice(0, 0, 0);
-  }
-};
+// const checkFirstIndexDecimal = () => {
+//   if (valueArray[0] === ".") {
+//     // valueArray.unshift("0");
+//     valueArray.splice(0, 0, 0);
+//   }
+// };
 
-const deleteLast = () => {
-  valueArray.splice(-1);
-  // valueArray.pop();
-  displayUpdate();
-};
+// const deleteLast = () => {
+//   valueArray.splice(-1, 1);
+//   // valueArray.pop();
+//   displayUpdate();
+// };
 
-const operation = (operator) => {
-  valueArray.push(operator);
-  if (valueArray.indexOf(operator) === 0) {
-    valueArray.shift(operator);
-  }
-  displayUpdate();
-  console.log(valueArray.indexOf(operator));
-};
+// const storeFirstValue = () => {
+//   const firstArray = valueArray.join("");
+//   let firstNum = parseFloat(firstArray);
+
+//   console.log(firstNum);
+//   displayUpdate();
+// };
+
+// const add = (firstN, secondN) => {
+//   let result = 0;
+//   let firstNumber = parseFloat(firstN);
+//   let secondNumber = parseFloat(secondN);
+//   result = firstNumber + secondNumber;
+//   return result;
+// };
 
 allButtons.forEach((button) =>
   button.addEventListener("click", (e) => {
-    let buttonValue = e.target.value;
-    if (buttonValue === "C") {
-      clear();
-      // console.log(valueArray);
-    }
+    const buttonValue = e.target.value;
+    const displayText = display.textContent;
+    let operator;
+    // if (buttonValue === "C") {
+    //   clear();
+    //   // console.log(valueArray);
+    // }
     if (buttonValue >= 0 && buttonValue <= 9) {
-      inputNumber(buttonValue);
+      if (display.textContent === "0") {
+        display.textContent = buttonValue;
+      } else {
+        display.textContent = displayText + buttonValue;
+      }
       // console.log(valueArray);
     }
-    if (buttonValue === "Del") {
-      deleteLast();
-      // console.log(valueArray);
-    }
+    // if (buttonValue === "Del") {
+    //   deleteLast();
+    //   console.log("del", valueArray);
+    // }
+
     if (buttonValue === ".") {
-      inputDecimal(buttonValue);
-      // console.log(valueArray);
+      display.textContent = displayText + ".";
     }
+    // console.log(valueArray);
+    // inputDecimal(buttonValue);
+
     if (
       buttonValue === "+" ||
       buttonValue === "-" ||
       buttonValue === "/" ||
       buttonValue === "*"
     ) {
-      operation(buttonValue);
+      display.textContent = "";
+    }
+    operator = buttonValue;
+    if (display.textContent === "" || displayText.charAt(0) === operator) {
+      display.textContent = buttonValue;
     }
   })
 );
+// const operation = (operator) => {
+//   const selectedOperator = operator;
+//   if (!operator) {
+//     if (display.textContent === "0" || selectedOperator === "+") {
+//       display.textContent = inputValue;
+//     }
+//   }
+// };
