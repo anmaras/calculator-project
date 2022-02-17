@@ -59,6 +59,8 @@ allButtons.forEach((button) => {
     }
     if (action === "clear") {
       display.textContent = "0";
+      delete calculator.dataset.firstValue;
+      delete calculator.dataset.operator;
     }
   });
 });
