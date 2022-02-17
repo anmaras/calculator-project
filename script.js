@@ -2,6 +2,7 @@ const calculator = document.querySelector("#calculator");
 const display = document.querySelector(".display-text");
 const allButtons = document.querySelectorAll("button");
 const history = document.querySelector(".display-history");
+const operators = document.querySelector("#number-wrapper");
 
 const calculateAdd = (firstNum, operator, secondNum) => {
   let result = "";
@@ -14,7 +15,7 @@ const calculateAdd = (firstNum, operator, secondNum) => {
   } else if (operator === "divide") {
     result = parseFloat(firstNum) / parseFloat(secondNum);
   }
-  return result;
+  return (display.textContent = result);
 };
 
 allButtons.forEach((button) => {
@@ -43,21 +44,21 @@ allButtons.forEach((button) => {
     ) {
       calculator.dataset.firstValue = displayNumber;
       calculator.dataset.operator = action;
-      display.textContent = "0";
+      display.textContent = 0;
     }
     if (action === "decimal") {
       if (!display.textContent.includes("."))
         display.textContent = displayNumber + ".";
     }
-    if (action === "clear") {
-      console.log("clear key");
-    }
     if (action === "calculate") {
+      //stored values from operator
       const firstValue = calculator.dataset.firstValue;
       const operator = calculator.dataset.operator;
       const secondValue = displayNumber;
-      const result = calculateAdd(firstValue, operator, secondValue);
-      display.textContent = result;
+      calculateAdd(firstValue, operator, secondValue); // calculate function
+    }
+    if (action === "clear") {
+      display.textContent = "0";
     }
   });
 });
