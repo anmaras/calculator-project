@@ -4,7 +4,6 @@ const numberButtons = document.querySelectorAll(".numbers");
 const decimalButton = document.querySelector(".decimal");
 const clearButton = document.querySelector(".clear");
 const deleteButton = document.querySelector(".delete");
-console.log(decimalButton);
 
 decimalButton.addEventListener("click", appendDecimal);
 clearButton.addEventListener("click", clearAll);
