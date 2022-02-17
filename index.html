@@ -15,25 +15,31 @@
         <div class="display-history"></div>
       </div>
       <div id="numbers-wrapper">
-        <button class="utilities" type="button" value="C">C</button>
-        <button class="utilities" type="button" value="Del">DEL</button>
-        <button class="utilities" type="button" value="%">%</button>
-        <button class="operators" type="button" value="/">/</button>
-        <button class="numbers" type="button" value="7">7</button>
-        <button class="numbers" type="button" value="8">8</button>
-        <button class="numbers" type="button" value="9">9</button>
-        <button class="operators" type="button" value="*">*</button>
-        <button class="numbers" type="button" value="4">4</button>
-        <button class="numbers" type="button" value="5">5</button>
-        <button class="numbers" type="button" value="6">6</button>
-        <button class="operators" type="button" value="-">-</button>
-        <button class="numbers" type="button" value="1">1</button>
-        <button class="numbers" type="button" value="2">2</button>
-        <button class="numbers" type="button" value="3">3</button>
-        <button class="operators" type="button" value="+">+</button>
-        <button class="numbers" type="button" value="0">0</button>
-        <button class="numbers" type="button" value=".">.</button>
-        <button class="operators" type="button" value="=">=</button>
+        <button class="utilities" type="button" data-action="clear">C</button>
+        <button class="utilities" type="button" data-action="Del">DEL</button>
+        <button class="utilities" type="button" data-action="%">%</button>
+        <button class="operators" type="button" data-action="divide">/</button>
+        <button class="numbers" type="button">7</button>
+        <button class="numbers" type="button">8</button>
+        <button class="numbers" type="button">9</button>
+        <button class="operators" type="button" data-action="multiply">
+          *
+        </button>
+        <button class="numbers" type="button">4</button>
+        <button class="numbers" type="button">5</button>
+        <button class="numbers" type="button">6</button>
+        <button class="operators" type="button" data-action="subtract">
+          -
+        </button>
+        <button class="numbers" type="button">1</button>
+        <button class="numbers" type="button">2</button>
+        <button class="numbers" type="button">3</button>
+        <button class="operators" type="button" data-action="add">+</button>
+        <button class="numbers" type="button">0</button>
+        <button class="numbers" type="button" data-action="decimal">.</button>
+        <button class="operators" type="button" data-action="calculate">
+          =
+        </button>
       </div>
     </div>
   </body>
