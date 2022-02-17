@@ -64,14 +64,19 @@ allButtons.forEach((button) => {
 
     if (action === "calculate") {
       //stored values from operator
-      const firstValue = calculator.dataset.firstValue;
+      let firstValue = calculator.dataset.firstValue;
       const operator = calculator.dataset.operator;
-      const secondValue = displayNumber;
+      let secondValue = displayNumber;
 
       if (firstValue) {
-        display.textContent = calculateAdd(firstValue, operator, secondValue); // calculate function
+        if (previousKeyType === "calculate") {
+          firstValue = displayNumber;
+          secondValue = calculator.dataset.modValue;
+        }
+        display.textContent = calculateAdd(firstValue, operator, secondValue);
       }
 
+      calculator.dataset.modValue = secondValue;
       calculator.dataset.previousKeyType = "calculate";
     }
 
