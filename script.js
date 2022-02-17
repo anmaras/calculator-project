@@ -1,8 +1,5 @@
-const calculator = document.querySelector("#calculator");
 const display = document.querySelector(".display-text");
 const allButtons = document.querySelectorAll("button");
-const history = document.querySelector(".display-history");
-const operators = document.querySelector("#number-wrapper");
 
 const calculateAdd = (firstNum, operator, secondNum) => {
   let result = "";
@@ -27,14 +24,15 @@ allButtons.forEach((button) => {
     const keyContent = key.textContent;
     // console.log(keyContent);
     const displayNumber = display.textContent;
-    const displayHistory = history.textContent;
+    const previousKeyType = calculator.dataset.previousKeyType; // for keeping on memory what was the last key
 
     if (!action) {
-      if (displayNumber === "0") {
+      if (displayNumber === "0" || previousKeyType === "operator") {
         display.textContent = keyContent;
       } else {
         display.textContent = displayNumber + keyContent;
       }
+      calculator.dataset.previousKeyType = "number";
     }
     if (
       action === "add" ||
@@ -42,25 +40,46 @@ allButtons.forEach((button) => {
       action === "multiply" ||
       action === "divide"
     ) {
+      const firstValue = calculator.dataset.firstValue;
+      const operator = calculator.dataset.operator;
+      const secondValue = displayNumber;
+      if (firstValue && operator && previousKeyType !== "operator") {
+        const calcValue = calculateAdd(firstValue, operator, secondValue);
+        display.textContent = calcValue;
+        calculator.dataset.firstValue = calcValue;
+      }
       calculator.dataset.firstValue = displayNumber;
       calculator.dataset.operator = action;
-      display.textContent = 0;
+      calculator.dataset.previousKeyType = "operator";
     }
+
     if (action === "decimal") {
-      if (!display.textContent.includes("."))
+      if (!display.textContent.includes(".")) {
         display.textContent = displayNumber + ".";
+      } else if (previousKeyType === "operator") {
+        display.textContent = "0.";
+      }
+      calculator.dataset.previousKeyType = "decimal";
     }
+
     if (action === "calculate") {
       //stored values from operator
       const firstValue = calculator.dataset.firstValue;
       const operator = calculator.dataset.operator;
       const secondValue = displayNumber;
-      calculateAdd(firstValue, operator, secondValue); // calculate function
+
+      if (firstValue) {
+        display.textContent = calculateAdd(firstValue, operator, secondValue); // calculate function
+      }
+
+      calculator.dataset.previousKeyType = "calculate";
     }
+
     if (action === "clear") {
       display.textContent = "0";
       delete calculator.dataset.firstValue;
       delete calculator.dataset.operator;
+      calculator.dataset.previousKeyType = "clear";
     }
   });
 });
