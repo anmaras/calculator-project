@@ -116,3 +116,15 @@ function divide(a, b) {
 function multiply(a, b) {
   return a * b;
 }
+document.addEventListener("keydown", (event) => {
+  const keyName = event.key;
+  if (keyName >= "0" && keyName <= "9") appendNumber(keyName);
+  console.log(keyName);
+  if (
+    keyName === PLUS_OPERATOR ||
+    keyName === DIVIDE_OPERATOR ||
+    keyName === MULTIPLY_OPERATOR ||
+    keyName === SUBTRACT_OPERATOR
+  )
+    operatorSelection(keyName);
+});
