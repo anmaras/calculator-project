@@ -1,7 +1,7 @@
 let firstOperand;
 let operator = null; //default operator condition
 let secondOperand;
-let screenReset = false;
+let diplayReset = false;
 
 const display = document.querySelector(".display-text");
 const displayHistory = document.querySelector(".display-history");
@@ -28,9 +28,9 @@ operatorButtons.forEach((button) => {
   button.addEventListener("click", () => operatorSelection(button.textContent));
 });
 
-function resetScreen() {
+function resetDisplay() {
   display.textContent = "";
-  screenReset = false; //will return falce every time is called
+  diplayReset = false; //will return falce every time is called
 }
 
 function clearAll() {
@@ -43,16 +43,23 @@ function clearAll() {
 
 function deleteLast() {
   display.textContent = display.textContent.slice(0, -1);
-  if (display.textContent === "") display.textContent = "0";
+  if (
+    display.textContent === "" ||
+    display.textContent === PLUS_OPERATOR ||
+    display.textContent === MULTIPLY_OPERATOR ||
+    display.textContent === DIVIDE_OPERATOR ||
+    display.textContent === SUBTRACT_OPERATOR
+  )
+    display.textContent = 0;
 }
 
 function appendNumber(number) {
-  if (display.textContent === "0" || screenReset) resetScreen(); // condition to append numbers , screenReset turns true from operationSelection function and false from it self.
+  if (display.textContent === "0" || diplayReset) resetDisplay(); // condition to append numbers , diplayReset turns true from operationSelection function and false from it self.
   display.textContent += number;
 }
 
 function appendDecimal() {
-  if (screenReset) resetScreen();
+  if (diplayReset) resetDisplay(); // need the displayReset to be false so it can append the decimal after the operand is not null
   if (display.textContent === "") display.textContent = "0";
   if (!display.textContent.includes(".")) display.textContent += ".";
 }
@@ -61,16 +68,21 @@ function operatorSelection(operatorButton) {
   if (operator !== null) evaluation(); // if operator is not null will evaluate
   firstOperand = display.textContent;
   operator = operatorButton;
-  displayHistory.textContent = `${firstOperand} ${operator}`;
-  screenReset = true; // changed from false to true everytime an operator is clicked, it is used in appendNumber ,decimal and evaluation functions
+  displayHistory.textContent = `${firstOperand} ${operatorButton}`;
+  diplayReset = true; // changed from false to true everytime an operator is clicked, it is used in appendNumber ,decimal and evaluation functions
 }
 
 function evaluation() {
   let result;
-  if (operator === null || screenReset) return; // condition wont let the equal button to be used if operator is not active or if screenReset is true
+  if (operator === null || diplayReset) return; // condition wont let the equal button to be used if operator is not active or if diplayReset is true
   secondOperand = display.textContent;
-  result = operate(operator, firstOperand, secondOperand);
-  display.textContent = roundResult(result);
+  if (operator === DIVIDE_OPERATOR && secondOperand === "0") {
+    result = "Infinity";
+    display.textContent = result;
+  } else {
+    result = operate(operator, firstOperand, secondOperand);
+    display.textContent = roundResult(result);
+  }
   displayHistory.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
   operator = null; // turn back operator to default
 }
