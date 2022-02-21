@@ -66,15 +66,18 @@ function operatorSelection(operatorButton) {
 }
 
 function evaluation() {
+  let result;
   if (operator === null || screenReset) return; // condition wont let the equal button to be used if operator is not active or if screenReset is true
   secondOperand = display.textContent;
-  display.textContent = operate(operator, firstOperand, secondOperand);
+  result = operate(operator, firstOperand, secondOperand);
+  display.textContent = roundResult(result);
+  console.log(result);
   displayHistory.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
   operator = null;
 }
 
 function roundResult(number) {
-  return Math.round(number);
+  return Math.round(number * 1000) / 1000; // function to keep the result rounded with three decimal digits
 }
 
 function operate(operator, a, b) {
