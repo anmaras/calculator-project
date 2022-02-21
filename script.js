@@ -1,7 +1,9 @@
 let firstOperand;
 let operator;
 let secondOperand;
+
 const display = document.querySelector(".display-text");
+const displayHistory = document.querySelector(".display-history");
 const numberButtons = document.querySelectorAll(".numbers");
 const decimalButton = document.querySelector(".decimal");
 const clearButton = document.querySelector(".clear");
@@ -43,14 +45,28 @@ function deleteLast() {
   if (display.textContent === "") display.textContent = "0";
 }
 
-function operatorSelection(operator) {
-  let operatorSelection;
-  if (
-    operator === PLUS_OPERATOR ||
-    operator === MULTIPLY_OPERATOR ||
-    operator === DIVIDE_OPERATOR ||
-    operator === SUBTRACT_OPERATOR
-  )
-    operatorSelection = operator;
-  console.log(operatorSelection);
+function operatorSelection(operatorButton) {
+  if (display.textContent !== "") evaluation();
+  firstOperand = display.textContent;
+  operator = operatorButton;
+  displayHistory.textContent = `${firstOperand} ${operator}`;
+}
+
+function evaluation() {
+  secondOperand = display.textContent;
+}
+
+function operate(operator, a, b) {}
+
+function add(a, b) {
+  return a + b;
+}
+function subtract(a, b) {
+  return a - b;
+}
+function divide(a, b) {
+  return a - b;
+}
+function multiply(a, b) {
+  return a - b;
 }
