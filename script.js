@@ -1,3 +1,6 @@
+let firstOperand;
+let operator;
+let secondOperand;
 const display = document.querySelector(".display-text");
 const numberButtons = document.querySelectorAll(".numbers");
 const decimalButton = document.querySelector(".decimal");
@@ -17,7 +20,7 @@ numberButtons.forEach((button) => {
   button.addEventListener("click", () => appendNumber(button.textContent));
 });
 operatorButtons.forEach((button) => {
-  button.addEventListener("click", () => operator(button.textContent));
+  button.addEventListener("click", () => operatorSelection(button.textContent));
 });
 
 function appendNumber(number) {
@@ -40,14 +43,14 @@ function deleteLast() {
   if (display.textContent === "") display.textContent = "0";
 }
 
-function operator(operator) {
-  let buttonText = operator;
+function operatorSelection(operator) {
   let operatorSelection;
   if (
-    buttonText === PLUS_OPERATOR ||
-    buttonText === MULTIPLY_OPERATOR ||
-    buttonText === DIVIDE_OPERATOR ||
-    buttonText === SUBTRACT_OPERATOR
+    operator === PLUS_OPERATOR ||
+    operator === MULTIPLY_OPERATOR ||
+    operator === DIVIDE_OPERATOR ||
+    operator === SUBTRACT_OPERATOR
   )
-    operatorSelection = buttonText;
+    operatorSelection = operator;
+  console.log(operatorSelection);
 }
