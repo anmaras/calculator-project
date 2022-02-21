@@ -71,9 +71,8 @@ function evaluation() {
   secondOperand = display.textContent;
   result = operate(operator, firstOperand, secondOperand);
   display.textContent = roundResult(result);
-  console.log(result);
   displayHistory.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
-  operator = null;
+  operator = null; // turn back operator to default
 }
 
 function roundResult(number) {
