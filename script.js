@@ -1,5 +1,5 @@
 let firstOperand;
-let operator = null;
+let operator = null; //default operator condition
 let secondOperand;
 let screenReset = false;
 
@@ -10,6 +10,7 @@ const decimalButton = document.querySelector(".decimal");
 const clearButton = document.querySelector(".clear");
 const deleteButton = document.querySelector(".delete");
 const operatorButtons = document.querySelectorAll(".operators");
+const equalButton = document.querySelector(".evaluate");
 const PLUS_OPERATOR = "+";
 const MULTIPLY_OPERATOR = "*";
 const DIVIDE_OPERATOR = "/";
@@ -18,6 +19,7 @@ const SUBTRACT_OPERATOR = "-";
 decimalButton.addEventListener("click", appendDecimal);
 clearButton.addEventListener("click", clearAll);
 deleteButton.addEventListener("click", deleteLast);
+equalButton.addEventListener("click", evaluation);
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => appendNumber(button.textContent));
@@ -26,44 +28,50 @@ operatorButtons.forEach((button) => {
   button.addEventListener("click", () => operatorSelection(button.textContent));
 });
 
-function appendNumber(number) {
-  if (display.textContent.length !== 13)
-    if (display.textContent === "0") display.textContent = number;
-    else display.textContent += number;
-}
-
-function appendDecimal() {
-  if (display.textContent.length !== 13)
-    if (!display.textContent.includes(".")) display.textContent += ".";
-}
-
-function clearAll() {
-  display.textContent = "0";
-}
 function resetScreen() {
   display.textContent = "";
   screenReset = false;
 }
+
+function clearAll() {
+  display.textContent = "0";
+  displayHistory.textContent = "";
+  firstOperand = "";
+  secondOperand = "";
+  operator = null;
+}
+
 function deleteLast() {
   display.textContent = display.textContent.slice(0, -1);
   if (display.textContent === "") display.textContent = "0";
 }
 
+function appendNumber(number) {
+  if (display.textContent.length !== 13)
+    if (display.textContent === "0" || screenReset) resetScreen();
+  display.textContent += number;
+}
+
+function appendDecimal() {
+  if (display.textContent.length !== 13) if (screenReset) resetScreen(); // keep the number lenght into the display box
+  if (display.textContent === "") display.textContent = "0";
+  if (!display.textContent.includes(".")) display.textContent += ".";
+}
+
 function operatorSelection(operatorButton) {
+  if (operator !== null) evaluation(); // if operator is not null will evaluate
   firstOperand = display.textContent;
   operator = operatorButton;
-  // evaluation();
-  if (display.textContent !== "") {
-    evaluation();
-  }
-  console.log(firstOperand);
-  console.log(operator);
+  displayHistory.textContent = `${firstOperand} ${operator}`;
+  screenReset = true; // changed from false to true everytime an operator is clicked, it is used in appendNumber ,decimal and evaluation functions
 }
 
 function evaluation() {
+  if (operator === null || screenReset) return; // condition wont let the equal button to be used after operator is active or not or if screenReset is true
   secondOperand = display.textContent;
-  console.log(secondOperand);
   display.textContent = operate(operator, firstOperand, secondOperand);
+  displayHistory.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
+  operator = null;
 }
 
 function operate(operator, a, b) {
