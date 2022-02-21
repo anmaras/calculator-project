@@ -46,17 +46,33 @@ function deleteLast() {
 }
 
 function operatorSelection(operatorButton) {
-  if (display.textContent !== "") evaluation();
   firstOperand = display.textContent;
   operator = operatorButton;
-  displayHistory.textContent = `${firstOperand} ${operator}`;
+  // evaluation();
+  if (display.textContent !== "") {
+    evaluation();
+  }
+  console.log(firstOperand);
+  console.log(operator);
 }
 
 function evaluation() {
   secondOperand = display.textContent;
+  console.log(secondOperand);
+  display.textContent = operate(operator, firstOperand, secondOperand);
 }
 
-function operate(operator, a, b) {}
+function operate(operator, a, b) {
+  a = parseFloat(a);
+  b = parseFloat(b);
+  if (operator === PLUS_OPERATOR) {
+    return add(a, b);
+  } else if (operator === MULTIPLY_OPERATOR) {
+    return multiply(a, b);
+  } else if (operator === DIVIDE_OPERATOR) {
+    return divide(a, b);
+  } else if (operator === SUBTRACT_OPERATOR) return subtract(a, b);
+}
 
 function add(a, b) {
   return a + b;
@@ -65,8 +81,8 @@ function subtract(a, b) {
   return a - b;
 }
 function divide(a, b) {
-  return a - b;
+  return a / b;
 }
 function multiply(a, b) {
-  return a - b;
+  return a * b;
 }
