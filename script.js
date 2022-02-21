@@ -40,7 +40,10 @@ function appendDecimal() {
 function clearAll() {
   display.textContent = "0";
 }
-
+function resetScreen() {
+  display.textContent = "";
+  screenReset = false;
+}
 function deleteLast() {
   display.textContent = display.textContent.slice(0, -1);
   if (display.textContent === "") display.textContent = "0";
