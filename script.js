@@ -30,7 +30,7 @@ operatorButtons.forEach((button) => {
 
 function resetScreen() {
   display.textContent = "";
-  screenReset = false;
+  screenReset = false; //will return falce every time is called
 }
 
 function clearAll() {
@@ -47,13 +47,12 @@ function deleteLast() {
 }
 
 function appendNumber(number) {
-  if (display.textContent.length !== 13)
-    if (display.textContent === "0" || screenReset) resetScreen();
+  if (display.textContent === "0" || screenReset) resetScreen(); // condition to append numbers , screenReset turns true from operationSelection function and false from it self.
   display.textContent += number;
 }
 
 function appendDecimal() {
-  if (display.textContent.length !== 13) if (screenReset) resetScreen(); // keep the number lenght into the display box
+  if (screenReset) resetScreen();
   if (display.textContent === "") display.textContent = "0";
   if (!display.textContent.includes(".")) display.textContent += ".";
 }
@@ -67,11 +66,15 @@ function operatorSelection(operatorButton) {
 }
 
 function evaluation() {
-  if (operator === null || screenReset) return; // condition wont let the equal button to be used after operator is active or not or if screenReset is true
+  if (operator === null || screenReset) return; // condition wont let the equal button to be used if operator is not active or if screenReset is true
   secondOperand = display.textContent;
   display.textContent = operate(operator, firstOperand, secondOperand);
   displayHistory.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
   operator = null;
+}
+
+function roundResult(number) {
+  return Math.round(number);
 }
 
 function operate(operator, a, b) {
