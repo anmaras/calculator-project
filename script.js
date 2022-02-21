@@ -65,10 +65,11 @@ function appendDecimal() {
 }
 
 function operatorSelection(operatorButton) {
-  if (operator !== null) evaluation(); // if operator is not null will evaluate
+  if (operator !== null) evaluation();
   firstOperand = display.textContent;
   operator = operatorButton;
   displayHistory.textContent = `${firstOperand} ${operatorButton}`;
+
   diplayReset = true; // changed from false to true everytime an operator is clicked, it is used in appendNumber ,decimal and evaluation functions
 }
 
