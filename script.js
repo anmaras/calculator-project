@@ -1,6 +1,7 @@
 let firstOperand;
-let operator;
+let operator = null;
 let secondOperand;
+let screenReset = false;
 
 const display = document.querySelector(".display-text");
 const displayHistory = document.querySelector(".display-history");
