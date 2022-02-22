@@ -19,8 +19,7 @@ const ENTER_KEY = "Enter";
 const ESCAPE_KEY = "Escape";
 const BACKSPACE_KEY = "Backspace";
 const DECIMAL_KEY = ".";
-const DISPLAY_MAX_LENGTH = 13;
-const HISTORY_MAX_LENGTH = 15;
+const DISPLAY_MAX_LENGTH = 12;
 
 decimalButton.addEventListener("click", appendDecimal);
 clearButton.addEventListener("click", clearAll);
@@ -78,9 +77,10 @@ function deleteLast() {
 }
 
 function appendNumber(number) {
-  if (display.textContent.length < DISPLAY_MAX_LENGTH) {
-    if (display.textContent === "" || diplayReset) resetDisplay(); // condition to append numbers , diplayReset turns true from operationSelection function and false from it self.
-    display.textContent += number;
+  if (diplayReset) resetDisplay(); // condition to append numbers , diplayReset turns true from operationSelection function and false from it self.
+  display.textContent += number;
+  if (display.textContent.length > DISPLAY_MAX_LENGTH) {
+    display.textContent = display.textContent.substring(0, 12); // condition to keep the length fixed with cobination css overflow
   }
 }
 
@@ -91,21 +91,19 @@ function appendDecimal() {
 }
 
 function operatorSelection(operatorButton) {
-  if (display.textContent.length < DISPLAY_MAX_LENGTH) {
-    if (display.textContent !== "") {
-      //  condition to prevent append an operator with empty string
-      if (operator !== null) evaluation();
-      firstOperand = display.textContent;
-      operator = operatorButton;
-      displayHistory.textContent = `${firstOperand}${operatorButton}`;
-      diplayReset = true; // changed from false to true everytime an operator is clicked, it is used in appendNumber ,decimal and evaluation functions
-    }
+  if (display.textContent !== "") {
+    //  condition to prevent append an operator symbol with empty string
+    if (operator !== null) evaluation();
+    firstOperand = display.textContent;
+    operator = operatorButton;
+    displayHistory.textContent = `${firstOperand}${operatorButton}`;
+    diplayReset = true; // changed from false to true everytime an operator is clicked, it is used in appendNumber ,decimal and evaluation functions
   }
 }
 
 function evaluation() {
   let result;
-  if (operator === null || diplayReset) return; // condition wont let the equal button to be used if operator is not active or if diplayReset is true
+  if (operator === null || diplayReset) return; // condition wont let the equal button to be used if operator is not active or the operator evaluate if diplayReset is true
   secondOperand = display.textContent;
   if (operator === DIVIDE_OPERATOR && secondOperand === "0") {
     result = "Infinity";
@@ -120,6 +118,7 @@ function evaluation() {
   }
   displayHistory.textContent = `${firstOperand}${operator}${secondOperand}=`;
   operator = null; // turn back operator to default
+  diplayReset = true; //
 }
 
 function roundResult(number) {
