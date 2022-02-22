@@ -20,6 +20,10 @@ decimalButton.addEventListener("click", appendDecimal);
 clearButton.addEventListener("click", clearAll);
 deleteButton.addEventListener("click", deleteLast);
 equalButton.addEventListener("click", evaluation);
+// document.addEventListener("keydown", appendDecimal);
+// document.addEventListener("keydown", clearAll);
+// document.addEventListener("keydown", deleteLast);
+// document.addEventListener("keydown", evaluation);
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => appendNumber(button.textContent));
@@ -116,6 +120,7 @@ function divide(a, b) {
 function multiply(a, b) {
   return a * b;
 }
+
 document.addEventListener("keydown", (event) => {
   const keyName = event.key;
   if (keyName >= "0" && keyName <= "9") appendNumber(keyName);
