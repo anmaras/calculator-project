@@ -15,15 +15,15 @@ const PLUS_OPERATOR = "+";
 const MULTIPLY_OPERATOR = "*";
 const DIVIDE_OPERATOR = "/";
 const SUBTRACT_OPERATOR = "-";
+const ENTER_KEY = "Enter";
+const ESCAPE_KEY = "Escape";
+const BACKSPACE_KEY = "Backspace";
+const DECIMAL_KEY = ".";
 
 decimalButton.addEventListener("click", appendDecimal);
 clearButton.addEventListener("click", clearAll);
 deleteButton.addEventListener("click", deleteLast);
 equalButton.addEventListener("click", evaluation);
-// document.addEventListener("keydown", appendDecimal);
-// document.addEventListener("keydown", clearAll);
-// document.addEventListener("keydown", deleteLast);
-// document.addEventListener("keydown", evaluation);
 
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => appendNumber(button.textContent));
@@ -132,4 +132,8 @@ document.addEventListener("keydown", (event) => {
     keyName === SUBTRACT_OPERATOR
   )
     operatorSelection(keyName);
+  if (keyName === ENTER_KEY) evaluation();
+  if (keyName === ESCAPE_KEY) clearAll();
+  if (keyName === BACKSPACE_KEY) deleteLast();
+  if (keyName === DECIMAL_KEY) appendDecimal();
 });
