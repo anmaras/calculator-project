@@ -52,9 +52,6 @@ html {
 }
 
 #display {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   grid-column: 1/-1;
   grid-row: 1/2;
   background-color: rgb(168, 170, 128);
@@ -77,16 +74,18 @@ html {
 .display-text {
   grid-row: 2/3;
   font-size: 50px;
+  min-height: 61.33px;
 }
 
 .display-history {
+  justify-self: end;
+  align-self: center;
   grid-row: 1/2;
-  font-size: 1.92em;
+  font-size: 1.35em;
 }
 
 .display-text,
 .display-history {
-  overflow: hidden;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 0px;
   margin: 0px;
