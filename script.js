@@ -118,7 +118,7 @@ function evaluation() {
   }
   displayHistory.textContent = `${firstOperand}${operator}${secondOperand}=`;
   operator = null; // turn back operator to default
-  diplayReset = true; //
+  diplayReset = true;
 }
 
 function roundResult(number) {
