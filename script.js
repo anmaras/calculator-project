@@ -58,7 +58,7 @@ function resetDisplay() {
 }
 
 function clearAll() {
-  display.textContent = "0";
+  display.textContent = "";
   displayHistory.textContent = "";
   firstOperand = "";
   secondOperand = "";
@@ -78,8 +78,7 @@ function deleteLast() {
 }
 
 function appendNumber(number) {
-  // if (display.textContent.length > DISPLAY_MAX_LENGTH) return;
-  if (display.textContent === "0" || diplayReset) resetDisplay(); // condition to append numbers , diplayReset turns true from operationSelection function and false from it self.
+  if (display.textContent === "" || diplayReset) resetDisplay(); // condition to append numbers , diplayReset turns true from operationSelection function and false from it self.
   display.textContent += number;
 }
 
@@ -90,12 +89,13 @@ function appendDecimal() {
 }
 
 function operatorSelection(operatorButton) {
-  if (operator !== null) evaluation();
-  firstOperand = display.textContent;
-  operator = operatorButton;
-  displayHistory.textContent = `${firstOperand} ${operatorButton}`;
-
-  diplayReset = true; // changed from false to true everytime an operator is clicked, it is used in appendNumber ,decimal and evaluation functions
+  if (display.textContent !== "") {
+    if (operator !== null) evaluation();
+    firstOperand = display.textContent;
+    operator = operatorButton;
+    displayHistory.textContent = `${firstOperand}${operatorButton}`;
+    diplayReset = true; // changed from false to true everytime an operator is clicked, it is used in appendNumber ,decimal and evaluation functions
+  }
 }
 
 function evaluation() {
@@ -108,9 +108,9 @@ function evaluation() {
   } else {
     result = operate(operator, firstOperand, secondOperand);
     display.textContent = roundResult(result);
-    if (display.textContent.length > 13) {
+    if (display.textContent.length > DISPLAY_MAX_LENGTH) {
       // condition if the number is too big for calculation
-      display.textContent = roundResult(result).toExponential(5);
+      display.textContent = roundResult(result).toExponential(6);
     }
   }
   displayHistory.textContent = `${firstOperand}${operator}${secondOperand}=`;
