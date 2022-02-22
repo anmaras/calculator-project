@@ -74,7 +74,7 @@ function deleteLast() {
     display.textContent === DIVIDE_OPERATOR ||
     display.textContent === SUBTRACT_OPERATOR
   )
-    display.textContent = 0;
+    display.textContent = "";
 }
 
 function appendNumber(number) {
