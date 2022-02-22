@@ -52,6 +52,9 @@ html {
 }
 
 #display {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   grid-column: 1/-1;
   grid-row: 1/2;
   background-color: rgb(168, 170, 128);
@@ -78,7 +81,7 @@ html {
 
 .display-history {
   grid-row: 1/2;
-  font-size: 30px;
+  font-size: 1.92em;
 }
 
 .display-text,
@@ -89,6 +92,9 @@ html {
   margin: 0px;
   /* color: rgb(165, 167, 126); */
   /* text-shadow: 1px 1px 0px black; */
+}
+.invisible {
+  visibility: hidden;
 }
 
 #numbers-wrapper {
