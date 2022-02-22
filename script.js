@@ -19,6 +19,8 @@ const ENTER_KEY = "Enter";
 const ESCAPE_KEY = "Escape";
 const BACKSPACE_KEY = "Backspace";
 const DECIMAL_KEY = ".";
+const DISPLAY_MAX_LENGTH = 13;
+const HISTORY_MAX_LENGTH = 15;
 
 decimalButton.addEventListener("click", appendDecimal);
 clearButton.addEventListener("click", clearAll);
@@ -76,6 +78,7 @@ function deleteLast() {
 }
 
 function appendNumber(number) {
+  // if (display.textContent.length > DISPLAY_MAX_LENGTH) return;
   if (display.textContent === "0" || diplayReset) resetDisplay(); // condition to append numbers , diplayReset turns true from operationSelection function and false from it self.
   display.textContent += number;
 }
@@ -105,8 +108,12 @@ function evaluation() {
   } else {
     result = operate(operator, firstOperand, secondOperand);
     display.textContent = roundResult(result);
+    if (display.textContent.length > 13) {
+      // condition if the number is too big for calculation
+      display.textContent = roundResult(result).toExponential(5);
+    }
   }
-  displayHistory.textContent = `${firstOperand} ${operator} ${secondOperand} =`;
+  displayHistory.textContent = `${firstOperand}${operator}${secondOperand}=`;
   operator = null; // turn back operator to default
 }
 
