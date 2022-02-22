@@ -90,6 +90,7 @@ function appendDecimal() {
 
 function operatorSelection(operatorButton) {
   if (display.textContent !== "") {
+    //  condition to prevent append an operator with empty string
     if (operator !== null) evaluation();
     firstOperand = display.textContent;
     operator = operatorButton;
