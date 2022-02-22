@@ -78,8 +78,10 @@ function deleteLast() {
 }
 
 function appendNumber(number) {
-  if (display.textContent === "" || diplayReset) resetDisplay(); // condition to append numbers , diplayReset turns true from operationSelection function and false from it self.
-  display.textContent += number;
+  if (display.textContent.length < DISPLAY_MAX_LENGTH) {
+    if (display.textContent === "" || diplayReset) resetDisplay(); // condition to append numbers , diplayReset turns true from operationSelection function and false from it self.
+    display.textContent += number;
+  }
 }
 
 function appendDecimal() {
@@ -89,13 +91,15 @@ function appendDecimal() {
 }
 
 function operatorSelection(operatorButton) {
-  if (display.textContent !== "") {
-    //  condition to prevent append an operator with empty string
-    if (operator !== null) evaluation();
-    firstOperand = display.textContent;
-    operator = operatorButton;
-    displayHistory.textContent = `${firstOperand}${operatorButton}`;
-    diplayReset = true; // changed from false to true everytime an operator is clicked, it is used in appendNumber ,decimal and evaluation functions
+  if (display.textContent.length < DISPLAY_MAX_LENGTH) {
+    if (display.textContent !== "") {
+      //  condition to prevent append an operator with empty string
+      if (operator !== null) evaluation();
+      firstOperand = display.textContent;
+      operator = operatorButton;
+      displayHistory.textContent = `${firstOperand}${operatorButton}`;
+      diplayReset = true; // changed from false to true everytime an operator is clicked, it is used in appendNumber ,decimal and evaluation functions
+    }
   }
 }
 
