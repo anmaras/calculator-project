@@ -15,6 +15,7 @@
 }
 
 * {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -22,14 +23,18 @@
 
 body {
   height: 100vh;
+  display: -ms-grid;
   display: grid;
   place-items: center;
   place-content: center;
 }
 
 #calculator {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr;
   grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 25px 4fr;
   grid-template-rows: 1fr 4fr;
   row-gap: 25px;
 
@@ -42,6 +47,14 @@ body {
   background-color: rgb(243, 220, 171);
 
   /* main calculator body shadows */
+  -webkit-box-shadow: 
+  /* AO effect */ inset 0px 0px 1px 3px rgb(101, 154, 170),
+    /* SSS effect  outer */ 0px 0px 3px 2px rgba(165, 232, 255, 0.199),
+    /* SSS effect  inner*/ inset 0px 0px 10px 10px rgba(214, 202, 179, 0.541),
+    /* Border */ 0px 0px 0px 15px rgb(95, 183, 209),
+    /*Border SSS effect outer */ 0px 0px 1px 17px rgb(165, 232, 255, 0.199),
+    /*Border  */ 0px 0px 1px 18px rgb(95, 183, 209),
+    /*Shadow */ 13px 9px 15px 15px rgba(0, 0, 0, 0.157);
   box-shadow: 
   /* AO effect */ inset 0px 0px 1px 3px rgb(101, 154, 170),
     /* SSS effect  outer */ 0px 0px 3px 2px rgba(165, 232, 255, 0.199),
@@ -52,19 +65,39 @@ body {
     /*Shadow */ 13px 9px 15px 15px rgba(0, 0, 0, 0.157);
 }
 
+#calculator > *:nth-child(1) {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+
+#calculator > *:nth-child(2) {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+}
+
 #display {
   overflow: auto;
   background-color: rgb(168, 170, 128);
   border-radius: 6px;
+  display: -ms-grid;
   display: grid;
+
+  -ms-grid-rows: 1fr 2fr;
 
   grid-template-rows: 1fr 2fr;
   justify-items: end;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: end;
   padding-right: 5px;
   padding-left: 5px;
 
   /* main display shadows */
+  -webkit-box-shadow: 
+  /*depth effect */ inset 0px 0px 2px 1px
+      rgb(219, 198, 152),
+    /*AO effect */ inset 0px 0px 10px 1px rgba(0, 0, 0, 0.233),
+    /* Shadow */ inset 3px 3px 5px rgba(0, 0, 0, 0.2);
   box-shadow: 
   /*depth effect */ inset 0px 0px 2px 1px rgb(219, 198, 152),
     /*AO effect */ inset 0px 0px 10px 1px rgba(0, 0, 0, 0.233),
@@ -72,11 +105,15 @@ body {
 }
 
 .display-text {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
   grid-row: 2/3;
   font-size: 72px;
 }
 
 .display-history {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
   grid-row: 1/2;
   font-size: 30px;
 }
@@ -94,7 +131,9 @@ body {
 }
 
 #numbers-wrapper {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 15px 1fr 15px 1fr 15px 1fr;
   grid-template-columns: repeat(4, 1fr);
   gap: 15px 15px;
 }
@@ -119,6 +158,10 @@ button:last-child {
   color: beige;
   background-color: rgb(41, 41, 41);
   border: 5px outset rgb(51, 51, 51, 0.25);
+  -webkit-box-shadow: 
+    /*sss effect */ inset 0px 0px 20px 2px rgb(34, 34, 34),
+    /*AO effect */ 0px 0px 2px 2px rgb(26, 14, 0.75),
+    /* shadow */ 3px 3px 5px rgba(0, 0, 0, 0.883);
   box-shadow: 
     /*sss effect */ inset 0px 0px 20px 2px rgb(34, 34, 34),
     /*AO effect */ 0px 0px 2px 2px rgb(26, 14, 0.75),
@@ -129,6 +172,9 @@ button:last-child {
   font-size: 35px;
   background-color: rgb(41, 41, 41);
   border: 1px outset rgb(51, 51, 51, 0.25);
+  -webkit-box-shadow: 
+    /*AO effect */ 0px 0px 2px 2px rgba(26, 14, 0.75),
+    /* shadow */ inset 0px 0px 15px 2px rgba(94, 50, 0, 0.1);
   box-shadow: 
     /*AO effect */ 0px 0px 2px 2px rgba(26, 14, 0.75),
     /* shadow */ inset 0px 0px 15px 2px rgba(94, 50, 0, 0.1);
@@ -139,6 +185,10 @@ button:last-child {
   color: beige;
   background-color: rgb(255, 143, 52);
   border: 5px outset rgba(255, 255, 255, 0.151);
+  -webkit-box-shadow: 
+    /*sss effect */ inset 0px 0px 20px 2px #ff9812,
+    /*AO effect */ 0px 0px 2px 2px rgb(201, 98, 0.75),
+    /* shadow */ 3px 3px 5px rgba(0, 0, 0, 0.233);
   box-shadow: 
     /*sss effect */ inset 0px 0px 20px 2px #ff9812,
     /*AO effect */ 0px 0px 2px 2px rgb(201, 98, 0.75),
@@ -149,6 +199,9 @@ button:last-child {
   font-size: 35px;
   background-color: rgb(255, 143, 52);
   border: 1px outset rgb(51, 51, 51, 0.25);
+  -webkit-box-shadow:  
+    /*AO effect */ 0px 0px 2px 2px rgb(201, 98, 0.75),
+    /* shadow */ inset 0px 0px 15px 2px rgba(158, 84, 0, 0.1);
   box-shadow:  
     /*AO effect */ 0px 0px 2px 2px rgb(201, 98, 0.75),
     /* shadow */ inset 0px 0px 15px 2px rgba(158, 84, 0, 0.1);
@@ -160,6 +213,11 @@ button:last-child {
   color: beige;
   border: 5px outset rgba(255, 222, 222, 0.15);
   background-color: rgb(255, 72, 59);
+  -webkit-box-shadow: 
+    /*sss effect */ inset 0px 0px 20px 2px
+      rgb(253, 70, 70),
+    /*AO effect */ 0px 0px 2px 2px rgba(206, 0, 0, 0.712),
+    /* shadow*/ 3px 3px 5px rgba(0, 0, 0, 0.23);
   box-shadow: 
     /*sss effect */ inset 0px 0px 20px 2px rgb(253, 70, 70),
     /*AO effect */ 0px 0px 2px 2px rgba(206, 0, 0, 0.712),
@@ -171,6 +229,9 @@ button:last-child {
   font-size: 35px;
   background-color: rgb(255, 72, 59);
   border: 1px outset rgb(51, 51, 51, 0.25);
+  -webkit-box-shadow: 
+    /*AO effect */ 0px 0px 2px 2px rgba(206, 0, 0, 0.712),
+    /* shadow */ inset 0px 0px 15px 2px rgb(241, 76, 76);
   box-shadow: 
     /*AO effect */ 0px 0px 2px 2px rgba(206, 0, 0, 0.712),
     /* shadow */ inset 0px 0px 15px 2px rgb(241, 76, 76);
